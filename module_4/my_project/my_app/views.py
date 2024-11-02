@@ -3,6 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .models import Author
 from .forms import AuthorForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return HttpResponse("Welcome to the Home Page")
@@ -51,3 +53,18 @@ def base_with_logo(request):
 
 def base_with_js(request):
     return render(request, 'my_app/base_with_js.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/login')  # Redirects the user to the login page
+    else:
+        form = UserCreationForm()
+    return render(request, 'my_app/register.html', {'form': form})
+
+
+@login_required
+def protected_profile(request):
+    return render(request, 'my_app/protected_profile.html')
