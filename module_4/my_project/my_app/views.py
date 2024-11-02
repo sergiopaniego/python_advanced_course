@@ -1,10 +1,13 @@
 # views.py
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
-from .models import Author
+from .models import Author, Book
 from .forms import AuthorForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets, generics
+from .serializers import BookSerializer, AuthorSerializer
+
 
 def home(request):
     return HttpResponse("Welcome to the Home Page")
@@ -68,3 +71,17 @@ def register(request):
 @login_required
 def protected_profile(request):
     return render(request, 'my_app/protected_profile.html')
+
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+class AuthorListCreateView(generics.ListCreateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
