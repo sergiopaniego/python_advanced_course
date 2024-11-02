@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <h1>Authors</h1>
+
+    <h2>Add New Author</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Muestra el formulario -->
+        <button type="submit">Add Author</button>
+    </form>
+
+    <h2>Author List</h2>
+    <ul>
+        {% for author in authors %}
+            <li>{{ author.name }} - {{ author.email }} - {{ author.date_of_birth }}</li>
+        {% empty %}
+            <li>No authors found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

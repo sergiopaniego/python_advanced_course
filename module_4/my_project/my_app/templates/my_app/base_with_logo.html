@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Django App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'my_app/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Display the static image here -->
+        <img src="{% static 'my_app/images/logo.png' %}" alt="Logo" width="150">
+    </header>
+    <main>
+        <h1>Welcome to My Django App</h1>
+        <p>This is an example of using static images in Django.</p>
+    </main>
+</body>
+</html>

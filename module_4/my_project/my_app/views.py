@@ -1,0 +1,53 @@
+# views.py
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect
+from .models import Author
+from .forms import AuthorForm
+
+def home(request):
+    return HttpResponse("Welcome to the Home Page")
+
+def about(request):
+    return render(request, 'my_app/about.html')
+
+
+def api_data(request): 
+    data = { "name": "Sergio", "age": 30, "city": "Madrid" } 
+    return JsonResponse(data) 
+
+
+def author_view(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('author_view') 
+    else:
+        form = AuthorForm()
+
+    authors = Author.objects.all()  # Obtiene todos los autores
+    return render(request, 'my_app/authors.html', {'form': form, 'authors': authors})
+
+from django.shortcuts import render
+
+def profile(request):
+    context = {
+        'username': 'Sergio',
+        'is_active': True,
+        'projects': [
+            {'name': 'Project A', 'status': 'Completed'},
+            {'name': 'Project B', 'status': 'In Progress'},
+            {'name': 'Project C', 'status': 'Not Started'}
+        ]
+    }
+    return render(request, 'my_app/profile.html', context)
+
+
+def about_2(request):
+    return render(request, 'my_app/about_2.html')
+
+def base_with_logo(request):
+    return render(request, 'my_app/base_with_logo.html')
+
+def base_with_js(request):
+    return render(request, 'my_app/base_with_js.html')

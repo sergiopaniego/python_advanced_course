@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}</h1>
+
+    {% if is_active %}
+        <p>Status: Active User</p>
+    {% else %}
+        <p>Status: Inactive User</p>
+    {% endif %}
+
+    <h2>Projects</h2>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <strong>{{ project.name }}</strong> - 
+                {% if project.status == 'Completed' %}
+                    <span style="color: green;">{{ project.status }}</span>
+                {% elif project.status == 'In Progress' %}
+                    <span style="color: orange;">{{ project.status }}</span>
+                {% else %}
+                    <span style="color: red;">{{ project.status }}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
