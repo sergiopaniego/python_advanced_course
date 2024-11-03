@@ -1,0 +1,7 @@
+[
+    {"Product": "A", "Sales": 1500, "Quantity": 10},
+    {"Product": "B", "Sales": 2000, "Quantity": 15},
+    {"Product": "C", "Sales": 2500, "Quantity": 20},
+    {"Product": "D", "Sales": 3000, "Quantity": 25},
+    {"Product": "E", "Sales": 3500, "Quantity": 30}
+]
