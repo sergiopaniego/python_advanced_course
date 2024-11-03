@@ -1,0 +1,21 @@
+<h2>Quarterly Sales Report</h2>
+<table>
+    <tr>
+        <th>Year</th>
+        <th>Q1</th>
+        <th>Q2</th>
+        <th>Q3</th>
+        <th>Q4</th>
+    </tr>
+    {% for entry in quarterly_sales %}
+    <tr>
+        <td>{{ entry.date__year }}</td>
+        <td>{{ entry.Q1|default:"0" }}</td>
+        <td>{{ entry.Q2|default:"0" }}</td>
+        <td>{{ entry.Q3|default:"0" }}</td>
+        <td>{{ entry.Q4|default:"0" }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No quarterly data available.</td></tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,33 @@
+<h2>Monthly Sales Report</h2>
+<table>
+    <tr>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Total Sales</th>
+    </tr>
+    {% for sale in monthly_sales %}
+    <tr>
+        <td>{{ sale.date__year }}</td>
+        <td>{{ sale.date__month }}</td>
+        <td>{{ sale.total_sales }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">No sales data available.</td></tr>
+    {% endfor %}
+</table>
+
+<h2>Top-Selling Products</h2>
+<table>
+    <tr>
+        <th>Product Name</th>
+        <th>Total Sales</th>
+    </tr>
+    {% for product in top_products %}
+    <tr>
+        <td>{{ product.product_name }}</td>
+        <td>{{ product.total_sales }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="2">No product data available.</td></tr>
+    {% endfor %}
+</table>
