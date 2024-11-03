@@ -1,0 +1,7 @@
+order_id,customer_id,product,amount
+1001,1,Widget A,29.99
+1002,1,Widget B,15.99
+1003,2,Widget C,45.00
+1004,3,Widget A,29.99
+1005,3,Widget D,49.99
+1006,4,Widget E,19.99
