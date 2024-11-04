@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: ./myapp
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./myapp:/app
+    environment:
+      - DEBUG=1
