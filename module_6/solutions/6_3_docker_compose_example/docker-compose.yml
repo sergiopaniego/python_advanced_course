@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5001:5000"  # Change the host port to 5001
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/mydatabase
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
