@@ -1,0 +1,8 @@
+runtime: python312  # Change as necessary for your Python version
+entrypoint: gunicorn -b :$PORT your_django_project.wsgi
+
+handlers:
+- url: /static
+  static_dir: static/
+- url: /.*
+  script: auto
