@@ -2,3 +2,4 @@
 
 Modules:
 
+* Python basics
